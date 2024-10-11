@@ -1,0 +1,64 @@
+
+plugins {
+	id 'com.jfrog.artifactory' version '4.29.2'
+    id 'com.github.node-gradle.node' version '3.3.0'
+}
+
+node {
+    version = ''  // Use the Node.js version you're working with
+    npmVersion = ''  // Use the npm version you're working with
+    download = false  // Automatically download Node.js/npm if not available
+}
+
+repositories {
+		maven {
+			mavenLocal()
+			url "${artifactoryURL}/repo2"
+            /*
+			credentials {
+				username artifactoryUser
+				password artifactoryPassword
+			}
+            */
+	}
+}
+
+task npmPublish(type: Exec) {
+    doFirst {
+        // Read .npmrc file from the current project directory
+        def npmrcFile = file("${projectDir}/.npmrc")
+        if (!npmrcFile.exists()) {
+            throw new GradleException(".npmrc file not found at " + npmrcFile)
+        }
+        println npmrcFile
+        def npmrcContent = npmrcFile.text
+        println npmrcContent
+        def registry = npmrcContent.find(/registry=(.*)/)?.replace("registry=", "").trim()
+        def authToken = npmrcContent.find(/:_auth="(.*)"/)?.replace(':_auth="', '').replace('"', '').trim()
+
+        if (!registry || !authToken) {
+            throw new GradleException("Failed to read registry or authToken from .npmrc")
+        }
+
+        println "Using registry: $registry"
+        println "Using toekn: $authToken"
+        // Set the environment variables for npm to pick up
+        environment "NPM_REGISTRY", registry
+        environment "NPM_AUTH_TOKEN", authToken
+    }
+    commandLine 'cmd', '/c', 'whoami'
+    // workingDir = file('.')
+    
+}
+
+task publish(type: NpmTask, dependsOn:'npmPublish'){
+    args = ['publish']
+}
+
+task npmBuild(type: NpmTask, dependsOn:'npmInstall') {
+    description = 'Build the TypeScript project using npm'
+    group = 'build'
+
+    args = ['run', 'build']  // This runs "npm run build" to compile the TypeScript project
+}
+
