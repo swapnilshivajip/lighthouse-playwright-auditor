@@ -1,0 +1,9 @@
+{
+    "formFactor": "desktop",
+    "output":["html","json"],
+    "auditCategories":["performance"],
+    "logLevel": "info",
+    "headless":false,
+    "disableGPU":false,
+    "url":"https://www.google.com/"
+}
