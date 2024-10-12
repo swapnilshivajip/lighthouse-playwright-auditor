@@ -102,16 +102,6 @@ It will generate reports as specified in lighthouse-config.json in report folder
         - performance-report-thread-2f15bd21-c498-4c05-9c44-05eac3adcf8a-1728628137750.html
         - performance-report-thread-2f15bd21-c498-4c05-9c44-05eac3adcf8a-1728628137765.json
 ```
-Examples:
-
-- [traces](./reports/c7836887-82e3-4e6d-b558-7215313dd14e-1728625301250-traces.json)
-
-- [devtoolslog](./reports/c7836887-82e3-4e6d-b558-7215313dd14e-1728625301315-DevtoolsLog.json)
-
-- [html](./reports/performance-report-thread-c7836887-82e3-4e6d-b558-7215313dd14e-1728625301232.html)
-
-- [json](./reports/performance-report-thread-c7836887-82e3-4e6d-b558-7215313dd14e-1728625301240.json)
-
 
 #### 5. Miscellaneous
 
