@@ -1,6 +1,6 @@
 {
   "name": "lighthouse-playwright-auditor",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "playwright lighthouse test integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "keywords": ["playwright", "lighthouse", "test", "testing", "performance", "webvitals"],
+  "keywords": [
+    "playwright",
+    "lighthouse",
+    "test",
+    "testing",
+    "performance",
+    "webvitals"
+  ],
   "author": "swapnilshivajip",
   "license": "ISC",
   "dependencies": {
@@ -29,4 +36,5 @@
     "type": "git",
     "url": "git+https://github.com/swapnilshivajip/lighthouse-playwright-auditor.git"
   }
+  
 }
