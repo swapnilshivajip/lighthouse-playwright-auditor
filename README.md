@@ -65,7 +65,7 @@ Code Sample:
                 such as click link to navigate to other page, 
                 once you arrive at your target page, run lighthouse audit
                 */
-                await lighthouseAuditor.runPlaywrightAudit(page);
+                let result = await lighthouseAuditor.runPlaywrightAudit(page);
                 console.log(`Median score: ${result.median}`);
                 // Assert the performance score
                 expect(result.median*100).toBeGreaterThan(90);
